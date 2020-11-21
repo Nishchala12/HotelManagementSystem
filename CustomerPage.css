@@ -1,0 +1,107 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color: gray;
+}
+.error {
+    color: #fdfdfd;
+    font-size: 10px;
+    margin: 0px;
+    margin-bottom: -10px;
+}
+.bg-image {
+    background-image: url('bg.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%; 
+    backface-visibility: hidden;
+    -webkit-filter: blur(10px);
+}
+.intro-text {
+    color: #222;
+    font-weight: bold;
+    border: 3px;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+.intro-text-1 {
+    color: #ffb25c;
+    font-weight: bold;
+    border: 3px;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 20px;
+}  
+.heading {
+    font-weight: bold;
+    color: #222;
+    font-family: "Arial Black";
+    transform: translate(-50%, -50%);
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    font-size: 30px;
+    text-shadow: 2px 2px 1px #ffb25c;
+}	
+::placeholder {
+    color: #808080;
+    font-size: 10px;  
+}
+.column1 {
+    float: left;
+    width: 46%;
+    position: absolute;
+    top: 60%;
+    left: 2%;
+    border-style: solid;
+    border-color: #ffb25c;
+    margin-bottom: 20px;
+}
+.column2 {
+   float: right;
+   width: 45%;
+   position: absolute;
+   top: 60%;
+   left: 53%;
+   border-style: solid;
+   border-color: #ffb25c;
+   margin-bottom: 20px;
+} 
+  /* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+   transform: translate(-50%, -50%);
+   margin-bottom: 20px;
+}
+.button {
+    background-color: #ffb35c; /* Green */
+    border: none;
+    color: #222;
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 10px;
+    cursor: pointer;
+    margin: 15px 20px 20px 335px;
+    border-radius: 18px;
+    font-family: "Arial Black";
+    
+}
