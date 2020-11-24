@@ -2,7 +2,6 @@
     $checkin3 = $checkin5 = $checkout3 = $checkout5  = $tempin3 = $tempout3 = $tempin5 = $tempout5 = "";
     $datediff = $totalcost = $people5 = $people3 = 0;
     
-        echo htmlspecialchars($_SERVER["PHP_SELF"]);
         if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["calculate3"])) {
             calculate3();
         }
@@ -39,19 +38,19 @@
                 if ($datediff == 0)
                     $datediff = 1;
                 $totalcost = $datediff*$_POST["people3"]*9800;
-                echo "<h2>Four Seasons  International</h2><br>";
+                echo "<h2>Four Seasons  International</h2>";
                 echo "<h3>Booking Details:</h3>";
-                echo "Regular Room (3-Star)<br>";
-                echo "Check-in Date: $tempin3";
+                echo "Regular Room:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp3-Star<br>";
+                echo "Check-in Date:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp $tempin3";
                 echo "<br>";
-                echo "Check-out Date: $tempout3";
+                echo "Check-out Date: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$tempout3";
                 echo "<br>";
-                echo "No. of Days: $datediff";
+                echo "No. of Days:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp $datediff";
                 echo "<br>";
-                echo "No. of Guests: ";
+                echo "No. of Guests:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp ";
                 echo $_POST["people3"];
                 echo "<br>";
-                echo "TotalCost: INR $totalcost<br>"; 
+                echo "Total Cost: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspINR $totalcost<br>"; 
                 echo "Kindly go back and click on 'Book Now' to confirm your booking!";
             }
         }
@@ -75,17 +74,17 @@
             $totalcost = $datediff*$_POST["people5"]*19400;
             echo "<h2>Four Seasons  International</h2>";
             echo "<h3>Booking Details:</h3>";
-            echo "Luxury Pool-Side Room (5-Star)<br>";
-            echo "Check-in Date: $tempin5";
+            echo "Luxury Room:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp5-Star<br>";
+            echo "Check-in Date:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp $tempin5";
             echo "<br>";
-            echo "Check-out Date: $tempout5";
+            echo "Check-out Date: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$tempout5";
             echo "<br>";
-            echo "No. of Days: $datediff";
+            echo "No. of Days:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp $datediff";
             echo "<br>";
-            echo "No. of Guests: ";
+            echo "No. of Guests:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp ";
             echo $_POST["people5"];
             echo "<br>";
-            echo "Total Cost: INR $totalcost<br>"; 
+            echo "Total Cost: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspINR $totalcost<br>"; 
             echo "Kindly go back and click on 'Book Now' to confirm your booking!";
         }
     }

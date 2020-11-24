@@ -14,9 +14,9 @@ body, html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 300vh; 
+    height: 200vh; 
     backface-visibility: hidden;
-    -webkit-filter: blur(10px);
+    -webkit-filter: blur(4px);
 }
 .intro-text {
     color: #222;
@@ -58,6 +58,13 @@ body, html {
     top: 10%;
     font-size: 30px;
     text-shadow: 2px 2px 1px #ffb25c;
+}
+.logout {
+    color: #ffb25c;
+    font-size: 14px;
+    left: 90%;
+    position: absolute;
+    bottom: 91%
 }	
 ::placeholder {
     color: #808080;

@@ -4,13 +4,48 @@ body, html {
 }
 .bg-image {
     background-image: url('bg.jpg');
-    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 300vh; 
-    backface-visibility: hidden;
+    height: 100%; 
     -webkit-filter: blur(4px);
+}
+.button1 {
+    background-color: #ffb35c; /* Green */
+    border: none;
+    color: #222;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 10px;
+    margin: 6px 2px;
+    cursor: pointer;
+    margin-right: 20px;
+    border-radius: 18px;
+    font-family: "Arial Black";
+    transform: translate(320%, -920%);
+}
+.button2 {
+    background-color: #ffb35c; /* Green */
+    border: none;
+    color: #222;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 10px;
+    margin: 6px 2px;
+    cursor: pointer;
+    margin-right: 20px;
+    border-radius: 18px;
+    font-family: "Arial Black";
+    transform: translate(480%, -1070%);
+}
+.logout {
+    color: #ffb25c;
+    font-size: 14px;
+    left: 90%;
+    position: absolute;
+    bottom: 91%
 }
 .intro-text {
     color: #222;
@@ -25,20 +60,6 @@ body, html {
     text-align: center;
     margin-top: 50px;
 }
-.intro-text-1 {
-    color: #ffb25c;
-    font-weight: bolder;
-    border: 3px;
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    padding: 20px;
-    text-align: center;
-    margin-top: 50px;
-    font-size: 20px;
-}  
 .heading {
     font-weight: bold;
     color: #222;
