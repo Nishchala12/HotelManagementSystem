@@ -1,10 +1,9 @@
 <!DOCTYPE HTML>  
 <html>
 <head>
-<link rel="stylesheet" href= "CustomerPage.css">
+<link rel = "stylesheet" href = "CustomerPage.css">
 </head>
-<body>  
-
+<body> 
 <div class = "bg-image"></div>
 	<h2 class = "heading">Rooms Gallore!</h2>
 	<p class = "intro-text">
@@ -17,7 +16,7 @@
     <div class="row">
         <div class="column1">
             <p style = "text-align: center; font-size: large; font-weight: bold; color: #ffb25c;">Regular:</p>
-            <p style = "margin: 10px; font-weight: normal;">
+            <p style = "margin: 10px; font-weight: normal; font-size: 14px;">
                  A three-star room with all the amenities that would provide you with a more 
                  than satisfactory stay!<br> The facilities include:<br>
                  ~ Complimentary Breakfast<br>
@@ -27,20 +26,25 @@
                  ~ Energy-Saving Lighting<br>
                  ~ 24x7 Room Service<br><br><br><br><br>
             </p>
-            <p style = "margin: 10px; font-weight: bold;">Cost per night per person :       INR 9800/-<br><br></p>
-            <div>
-                <p style="margin-left: 72px;">
-                    Check-in Date:&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287
-                    &#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287
-                    &#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287Check-out Date:</p>  
-                <input type="date" id="checkin" name="checkin" style="margin-left: 50px; margin-right: 70px; border-radius: 10px;">      
-                <input type="date" id="checkout" name="checkout" style = "margin-bottom: 20px; border-radius: 10px;"> 
-            </div>
-            <button class = "button" onClick = "">Calculate</button>  
+            <p style = "margin: 20px; font-weight: bold; font-size: 14px;">
+                Cost per night per person:&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287
+                &#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287
+                &#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287INR 9800/-<br><br></p>
+            <p style = "margin-left: 20px; font-size: 14px;">
+                Check-in Date:&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287
+                &#8287&#8287&#8287&#8287&#8287&#8287Check-out Date:&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287
+                &#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287No. of People:</p> 
+            <form method = "post" action = "CustomerPage.php">
+                <input type="date" id = "checkin3"  name = "checkin3" style="margin-left: 20px; margin-right: 20px; border-radius: 10px; width: 125px;">      
+                <input type="date" id = "checkout3" name = "checkout3" style = "margin-bottom: 20px; border-radius: 10px; width: 125px;"> 
+                <input type = "number" id = "people3" name = "people3" style = "margin-right: 20px; margin-left: 20px; width: 90px; border-radius: 10px; height: 17px;">
+                <button class = "button" name = "calculate3" style = "margin-left: 230px;  margin-bottom: 20px;" onClick = "calculate3()">Calculate</button>
+                <button class = "button" name = "book3" style = "margin-left: 20px;  margin-bottom: 20px;" onClick = "book3()">Book Now</button>    
+            </form>
         </div>
         <div class="column2">
-            <p style = "text-align: center; font-size: large; font-weight: bold; color: #ffb25c;">Luxury Pool-side:</p>
-            <p style = "margin: 10px; font-weight: normal;">
+            <p style = "text-align: center; font-size: large; font-weight: bold; color: #ffb25c;">Luxury Pool-Side:</p>
+            <p style = "margin: 10px; font-weight: normal; font-size: 14px;">
                  A five-star room with all the amenities that would provide you with a luxurious
                  stay with everything you could want and more!<br> The facilities include:<br> 
                  ~ Complimentary Breakfast, Lunch, and Dinner<br> 
@@ -53,18 +57,25 @@
                  ~ Minibar/Fridge<br>
                  ~ Complimentary one-time access to the Spa<br><br>
             </p>
-            <p style = "margin: 10px; font-weight: bold;">Cost per night per person :       INR 19,400/-<br><br></p>
-            <div>
-                <p style="margin-left: 72px;">
-                    Check-in Date:&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287
-                    &#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287
-                    &#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287Check-out Date:</p>  
-                <input type="date" id="checkin" name="checkin" style="margin-left: 50px; margin-right: 70px; border-radius: 10px;">     
-                <input type="date" id="checkout" name="checkout" style = "margin-bottom: 20px; border-radius: 10px;"> 
-            </div>
-            <button class = "button" onClick = "">Calculate</button>
+            <p style = "margin: 20px; font-weight: bold; font-size: 14px;">
+                Cost per night per person:&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287
+                &#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287
+                &#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287INR 19,400/-<br><br></p>
+                <p style = "margin-left: 20px; font-size: 14px;">
+                    Check-in Date:&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287
+                    &#8287&#8287&#8287&#8287&#8287&#8287Check-out Date:&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287
+                    &#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287No. of People:</p> 
+                <form method = "post" action = "CustomerPage.php">
+                    <input type = "date" id = "checkin5" name = "checkin5" style = "margin-left: 20px; margin-right: 20px; border-radius: 10px; width: 125px;">     
+                    <input type = "date" id = "checkout5" name = "checkout5" style = "margin-bottom: 20px; border-radius: 10px; width: 125px;"> 
+                    <input type = "number" id = "people5" name = "people5" style = "margin-right: 20px; margin-left: 20px; width: 90px; border-radius: 10px; height: 17px;">
+                    <button class = "button" name = "calculate5" style = "margin-left: 230px; margin-bottom: 20px;" onClick = "calculate5()">Calculate</button>
+                    <button class = "button" name = "book5" style = "margin-left: 20px;  margin-bottom: 20px;" onClick = "book5()">Book Now</button>    
+                </form>
         </div>
       </div>
+      <p style = "margin-top: 300px">&#8287</p>
+
 
 </body>
 </html>

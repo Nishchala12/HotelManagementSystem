@@ -4,10 +4,9 @@ body, html {
 }
 .error {
     color: #fdfdfd;
-    font-size: 10px;
-    margin: 0px;
-    margin-bottom: -10px;
+    font-size: 12px;
 }
+
 .bg-image {
     background-image: url('bg.jpg');
     background-position: center;

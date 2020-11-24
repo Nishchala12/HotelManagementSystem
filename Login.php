@@ -4,10 +4,14 @@
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	  if (empty($_POST["pword"])) {
-		echo "<script type = 'text/javascript'>alert('Password is  required');</script>"; 
+		header("Location: Loginpage.php?error=password is required");
+	    exit();
+		//echo "<script type = 'text/javascript'>alert('Password is  required');</script>"; 
 	  } else {
 		  if (strlen($_POST["pword"])<8) {
-		  echo "<script type = 'text/javascript'>alert('Password should be at least 8 characters long!');</script>"; 
+			header("Location: Loginpage.php?error=Password should be at least 8 characters long!");
+			exit();
+		  //echo "<script type = 'text/javascript'>alert('Password should be at least 8 characters long!');</script>"; 
 		} 
 		else {
 		$pword = test_input($_POST["pword"]);
@@ -16,12 +20,15 @@
 		
 	  }
 	  if (empty($_POST["email"])) {
-		echo "<script type = 'text/javascript'>alert('Email is required');</script>";
+		header("Location: Loginpage.php?error=Email is required");
+	    exit();
 	  } 
 	  else {
 		// check if e-mail address is well-formed
 		if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-		   echo "<script type = 'text/javascript'>alert('Invalid email format!');</script>"; 
+			header("Location: Loginpage.php?error=Invalid email format!");
+			exit();
+		  // echo "<script type = 'text/javascript'>alert('Invalid email format!');</script>"; 
 		}
 		else {
 			$email = test_input($_POST["email"]);
@@ -37,7 +44,9 @@
 	}
 
 	function clear_input() {
-		echo "<script type = 'text/javascript'>alert('User logged in!');</script>";
+		header("Location: Loginpage?error=user logg in");
+			exit();
+		//echo "<script type = 'text/javascript'>alert('User logged in!');</script>";
 	  $pword = $email = "";
 	}
 ?>
