@@ -16,7 +16,7 @@
 		<br><br>
 		<input class = "text-input" type = "password" name = "pword" placeholder="Password">
 		<br><br>
-		<button style = "margin-left: 20px;" class = "button" onClick = "clear_input()">Login</button>  
+		<button style = "margin-left: 20px;" name = "login" class = "button" onclick = 'clear_input()'>Login</button>  
 	</form>
 	<p class = "signup-text">New User? Sign up below!</p>
 	<button class = "button" onclick='window.location.href="CustomerSignupPage.php"'>Customer</button>

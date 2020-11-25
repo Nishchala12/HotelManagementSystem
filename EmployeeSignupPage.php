@@ -19,7 +19,7 @@
 		<br><br>
 		<input class = "text-input" type = "text" name = "phone"  placeholder="Contact No.">
 		<br><br>	
-		<button style = "margin-left: 20px;" class = "button" onClick = "clear_input()">Sign Up</button>  
+		<button style = "margin-left: 20px;" name = "esignup" class = "button" onclick = "clear_input()">Sign Up</button>  
 	</form>
 	</div>
 

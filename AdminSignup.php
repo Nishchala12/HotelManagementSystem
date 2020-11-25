@@ -3,7 +3,10 @@
 // define variables and set to empty values
 	$pword = $email = $name = $phone = "";
 
-	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["asignup"])) {
+		clear_input();
+	}
+	function clear_input () {
 	  if (empty($_POST["pword"])) {
 		header("Location: AdminSignupPage.php?error=password is required");
 	    exit();
@@ -58,6 +61,9 @@
 			exit();
 		  }
 	  }
+	  echo "<script type = 'text/javascript'>alert('User signed up successfully!');
+	  window.location='CustomerPage.html';</script>";
+	  $pword = $email = $name = $phone = "";
 	}
   
 	
@@ -67,11 +73,6 @@
 	  $data = stripslashes($data);
 	  $data = htmlspecialchars($data);
 	  return $data;
-	}
-
-	function clear_input() {
-	  echo "<script type = 'text/javascript'>alert('User signed up!');</script>";
-	  $pword = $email = "";
 	}
 ?>
 

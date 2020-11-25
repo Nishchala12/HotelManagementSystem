@@ -2,7 +2,11 @@
 // define variables and set to empty values
 	$pword = $email = "";
 
-	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
+		clear_input();
+	}
+
+	function clear_input () {
 	  if (empty($_POST["pword"])) {
 		header("Location: Loginpage.php?error=password is required");
 	    exit();
@@ -33,21 +37,17 @@
 		else {
 			$email = test_input($_POST["email"]);
 		}		
-	  }
+	  } 
+	  echo "<script type = 'text/javascript'>alert('User logged in successfully!');
+		window.location='CustomerPage.html';</script>";
+	  $pword = $email = "";
 	}
-
+	
 	function test_input($data) {
 	  $data = trim($data);
 	  $data = stripslashes($data);
 	  $data = htmlspecialchars($data);
 	  return $data;
-	}
-
-	function clear_input() {
-		header("Location: Loginpage?error=user logg in");
-			exit();
-		//echo "<script type = 'text/javascript'>alert('User logged in!');</script>";
-	  $pword = $email = "";
 	}
 ?>
 
