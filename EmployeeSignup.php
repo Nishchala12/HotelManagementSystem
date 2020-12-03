@@ -39,7 +39,7 @@
 	  } 
 	  else {
 		// check if name only contains letters and whitespace
-		if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
+		if (!preg_match("/^[a-zA-Z-' ]*$/",$_POST["name"])) {
 			header("Location: EmployeeSignupPage.php?error=Only letters and whitespace allowed!");
 		exit();
 		}
@@ -60,9 +60,17 @@
 			exit();
 		  }
 	  }
-	  echo "<script type = 'text/javascript'>alert('User signed up successfully!');
-	  window.location='EmployeePage.html';</script>";
-	  $pword = $email = $name = $phone = "";
+	  $conn = mysqli_connect('localhost:3308','root', '','hotelmanagement');
+	  $sql = "INSERT INTO employee (name, email, password, contactno) VALUES ('$name', '$email', '$pword', '$phone')";
+
+    if (mysqli_query($conn, $sql)) {
+		echo "<script type = 'text/javascript'>alert('Employee signed up successfully!');
+		window.location='EmployeePage.html';</script>";
+		$pword = $email = $name = $phone = "";
+	} 
+	else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
 	}
 	function test_input($data) {
 	  $data = trim($data);
