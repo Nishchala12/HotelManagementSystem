@@ -1,4 +1,6 @@
 <?php
+
+
 // define variables and set to empty values
 	$pword = $email = "";
 
@@ -38,9 +40,41 @@
 			$email = test_input($_POST["email"]);
 		}		
 	  } 
-	  echo "<script type = 'text/javascript'>alert('User logged in successfully!');
+	  
+	
+	$conn = mysqli_connect('localhost:3308', 'root', '', 'hotelmanagement' );
+	$sql = "SELECT * FROM customer WHERE email = '$email' and password = '$pword'";
+	  $result = mysqli_query($conn,$sql);
+	  
+	  $sql1 = "SELECT * FROM admin WHERE email = '$email' and password = '$pword'";
+	  $result1 = mysqli_query($conn,$sql1);
+
+	  $sql2 = "SELECT * FROM employee WHERE email = '$email' and password = '$pword'";
+	  $result2 = mysqli_query($conn,$sql2);
+ 
+	  if(mysqli_num_rows($result1)==1)
+	  {
+		echo "<script type = 'text/javascript'>alert('Admin logged in successfully!');
+		window.location='TimeTable.html';</script>";
+	  }
+
+	  else if(mysqli_num_rows($result) ==1)
+	  {
+		echo "<script type = 'text/javascript'>alert('Customer logged in successfully!');
 		window.location='CustomerPage.html';</script>";
-	  $pword = $email = "";
+	  }
+    else if(mysqli_num_rows($result2) == 1)
+	  {
+		echo "<script type = 'text/javascript'>alert('Employee logged in successfully!');
+		window.location='EmployeePage.html';</script>";
+	  }
+	else
+	{
+		echo "<script type = 'text/javascript'>alert('Please enter correct credentials');
+		window.location='LoginPage.php';</script>";
+	}
+
+    $pword = $email = "";
 	}
 	
 	function test_input($data) {
