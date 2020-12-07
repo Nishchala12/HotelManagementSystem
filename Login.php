@@ -55,7 +55,7 @@
 	  if(mysqli_num_rows($result1)==1)
 	  {
 		echo "<script type = 'text/javascript'>alert('Admin logged in successfully!');
-		window.location='AdminPage.html';</script>";
+		window.location='AdminPage.php';</script>";
 	  }
 
 	  else if(mysqli_num_rows($result) == 1)

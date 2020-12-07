@@ -66,7 +66,7 @@
 
 	  if (mysqli_query($conn, $sql)) {
 		echo "<script type = 'text/javascript'>alert('Admin signed up successfully!');
-		window.location='TimeTable.html';</script>";
+		window.location='AdminPage.php';</script>";
 		$pword = $email = $name = $phone = "";
 	  } 
 	  else {
