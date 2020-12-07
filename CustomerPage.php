@@ -1,4 +1,5 @@
 <?php
+
     $checkin3 = $checkin5 = $checkout3 = $checkout5  = $tempin3 = $tempout3 = $tempin5 = $tempout5 = "";
     $datediff = $totalcost = $people5 = $people3 = 0;
     
@@ -38,8 +39,12 @@
                 if ($datediff == 0)
                     $datediff = 1;
                 $totalcost = $datediff*$_POST["people3"]*9800;
+                include 'Login.php';
                 echo "<h2>Four Seasons  International</h2>";
                 echo "<h3>Booking Details:</h3>";
+                echo "Name:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp".$name."<br>";
+                echo "Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp".$email."<br>";
+                echo "Contact No:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp".$phone."<br>";
                 echo "Regular Room:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp3-Star<br>";
                 echo "Check-in Date:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp $tempin3";
                 echo "<br>";

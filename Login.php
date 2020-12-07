@@ -1,8 +1,8 @@
 <?php
 
 
-// define variables and set to empty values
-	$pword = $email = "";
+// define variables and set to empty values		
+	$pword = $email = $name = $phone = "";
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
 		clear_input();
@@ -55,28 +55,32 @@
 	  if(mysqli_num_rows($result1)==1)
 	  {
 		echo "<script type = 'text/javascript'>alert('Admin logged in successfully!');
-		window.location='TimeTable.html';</script>";
+		window.location='AdminPage.html';</script>";
 	  }
 
-	  else if(mysqli_num_rows($result) ==1)
+	  else if(mysqli_num_rows($result) == 1)
 	  {
+		$row = $result->fetch_array();
+		$name = $row['Name'];
+		$email = $row['Email'];
+		$phone = $row['ContactNo'];	
 		echo "<script type = 'text/javascript'>alert('Customer logged in successfully!');
 		window.location='CustomerPage.html';</script>";
 	  }
-    else if(mysqli_num_rows($result2) == 1)
+      else if(mysqli_num_rows($result2) == 1)
 	  {
 		echo "<script type = 'text/javascript'>alert('Employee logged in successfully!');
 		window.location='EmployeePage.html';</script>";
 	  }
-	else
-	{
+	  else
+	  {
 		echo "<script type = 'text/javascript'>alert('Please enter correct credentials');
 		window.location='LoginPage.php';</script>";
+	  }
+
+	//$pword = $email = "";
 	}
 
-    $pword = $email = "";
-	}
-	
 	function test_input($data) {
 	  $data = trim($data);
 	  $data = stripslashes($data);

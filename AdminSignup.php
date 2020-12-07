@@ -64,19 +64,14 @@
 	  $conn = mysqli_connect('localhost:3308','root', '','hotelmanagement');
 	  $sql = "INSERT INTO admin (name, email, password, contactno) VALUES ('$name', '$email', '$pword', '$phone')";
 
-    if (mysqli_query($conn, $sql)) {
+	  if (mysqli_query($conn, $sql)) {
 		echo "<script type = 'text/javascript'>alert('Admin signed up successfully!');
 		window.location='TimeTable.html';</script>";
 		$pword = $email = $name = $phone = "";
-	} 
-	else {
-      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
-
-
-
-	  
-	  
+	  } 
+	  else {
+		echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+      }  
 	}
   
 	
