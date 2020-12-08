@@ -38,7 +38,7 @@ body, html {
     margin-right: 20px;
     border-radius: 18px;
     font-family: "Arial Black";
-    transform: translate(480%, -1070%);
+    transform: translate(430%, -1070%);
 }
 .logout {
     color: #ffb25c;

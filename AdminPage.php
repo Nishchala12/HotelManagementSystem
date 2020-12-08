@@ -1,68 +1,104 @@
 <?php
-    $buttonNameStatus = "Update";
-    $buttonStyleStatus = "showButton";
-       
+    
+  if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["employee"])) {
+    viewEmployee();
+  }
+  elseif ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["customer"])) {
+    viewCustomer();
+  }
+  elseif ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["booking"])) {
+    viewBooking();
+  }
+
+  function viewEmployee () {
     $conn = mysqli_connect('localhost:3308','root', '','hotelmanagement');
     $sql = "SELECT Name, Email, ContactNo FROM employee";
-    $name = $phone = $email = "";
     if ($result = mysqli_query($conn, $sql)) {
-		if ($result->num_rows > 0) {
-            // output data of each row
-            while($row = $result->fetch_assoc()) {
-             
-            }
-          } else {
-            echo "0 results";
-          }
-	} 
-	else {
+      if ($result->num_rows > 0) {
+        echo "<h2>Four Seasons International</h2>";
+        echo "<h3>Signed-up Employees:</h3>";
+        while($row = $result->fetch_assoc()) {
+          echo "-------------------------------------------<br>";
+          echo "Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp".$row["Email"]."<br>";
+          echo "Name:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp".$row["Name"]."<br>";
+          echo "Contact No:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp".$row["ContactNo"]."<br>";
+          echo "-------------------------------------------<br><br><br>";
+
+        }
+      } else {
+          echo "<h2>Four Seasons International</h2>";
+          echo "<h3>Signed-up Employees:</h3>";
+          echo "0 results";
+        }
+    } 
+	  else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
-    function searchEmployee () {
-        if($buttonStyleStatus == "hideButton")
-            $buttonStyleStatus = "showButton";
-    }
-    function update () {
-        if($buttonNameStatus == "Update")
-             $buttonNameStatus == "Save";
+  }
 
+  function viewCustomer () {
+    $conn = mysqli_connect('localhost:3308','root', '','hotelmanagement');
+    $sql = "SELECT Name, Email, ContactNo FROM customer";
+    if ($result = mysqli_query($conn, $sql)) {
+      if ($result->num_rows > 0) {
+        echo "<h2>Four Seasons International</h2>";
+        echo "<h3>Signed-up Customers:</h3>";
+        while($row = $result->fetch_assoc()) {
+          echo "-------------------------------------------<br>";
+          echo "Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp".$row["Email"]."<br>";
+          echo "Name:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp".$row["Name"]."<br>";
+          echo "Contact No:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp".$row["ContactNo"]."<br>";
+          echo "-------------------------------------------<br><br><br>";
+        }
+      } else {
+          echo "<h2>Four Seasons International</h2>";
+          echo "<h3>Signed-up Customers:</h3>";
+          echo "0 results";
+        }
+    } 
+	  else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
+  }
+
+  function viewBooking () {
+    $conn = mysqli_connect('localhost:3308','root', '','hotelmanagement');
+    $sql = "SELECT Name, Email, ContactNo, Checkin, Checkout, RoomType, Days, People, Cost FROM booking";
+    if ($result = mysqli_query($conn, $sql)) {
+      if ($result->num_rows > 0) {
+        echo "<h2>Four Seasons International</h2>";
+        echo "<h3>Booked Rooms:</h3>";
+        while($row = $result->fetch_assoc()) {
+          echo "-------------------------------------------<br>";
+          echo "Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp".$row["Email"]."<br>";
+          echo "Name:sp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp".$row["Name"]."<br>";
+          echo "Contact No:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp".$row["ContactNo"]."<br>";
+          echo "Check-in Date:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp".$row["Checkin"]."<br>";
+          echo "Check-out Date:&nbsp&nbsp&nbsp&nbsp&nbsp".$row["Checkout"]."<br>";
+          echo "Room Type:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp".$row["RoomType"]."<br>";
+          echo "No. of Days:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp".$row["Days"]."<br>";
+          echo "No. of Guests:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp".$row["People"]."<br>"; 
+          echo "Total Cost:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspINR ".$row["Cost"]."<br>"; 
+          echo "-------------------------------------------<br><br><br>";
+        }
+      } else {
+          echo "<h2>Four Seasons International</h2>";
+          echo "<h3>Booked Rooms:</h3>";
+          echo "0 results";
+        }
+    } 
+	  else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+
+
+  }
+
+
+
+ 
 ?>
 
-<!DOCTYPE HTML>  
-<html>
-<head>
-<link rel="stylesheet" href = "AdminPage.css">
-</head>
 
-<script type="text/javascript">
-    function searchEmployee(){
-            document.getElementById('update').className = "showButton";
-            document.getElementById('input1').className = "showInput1";
-            document.getElementById('input2').className = "showInput2";
-    }
-
-</script>
-
-<body>  
-<div class = "bg-image"></div>
-    <a href="LoginPage.php" class = "logout">Logout</a>
-    <h2 class = "heading">Welcome Admin!</h2>
-    <p class = "intro-text">
-        Here are the list of staff currently employed. Attendance of the employees can be marked.
-        Incase of deletion of employees, click on the 'Delete' button.
-    </p>
-    <div class = "column1">
-      <input class = "search-bar" type = "text" placeholder="Enter Employee Email ID" name="search">
-      <button  name = "search" type = "submit" class = "button1" onclick = "searchEmployee()">🔍</button>
-      <div>
-        <button id = "update" class = "hideButton" type = "submit" onclick = "update()"><?php echo htmlspecialchars($buttonNameStatus);?></button>
-        <input id = "input1" class = "hideInput1" type = "text" value = "sauhdaiuvbudvb"/>
-        <input id = "input2" class = "hideInput2" type = "number" value = 0/>
-
-      </div>
-    </div>
-</body>
-</html>
 
 

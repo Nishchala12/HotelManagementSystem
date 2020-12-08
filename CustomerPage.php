@@ -40,7 +40,7 @@
                     $datediff = 1;
                 $totalcost = $datediff*$_POST["people3"]*9800;
                 include 'Login.php';
-                echo "<h2>Four Seasons  International</h2>";
+                echo "<h2>Four Seasons International</h2>";
                 echo "<h3>Booking Details:</h3>";
                 echo "Name:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp".$name."<br>";
                 echo "Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp".$email."<br>";
@@ -77,7 +77,7 @@
             if ($datediff == 0)
                 $datediff = 1;
             $totalcost = $datediff*$_POST["people5"]*19400;
-            echo "<h2>Four Seasons  International</h2>";
+            echo "<h2>Four Seasons International</h2>";
             echo "<h3>Booking Details:</h3>";
             echo "Luxury Room:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp5-Star<br>";
             echo "Check-in Date:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp $tempin5";
