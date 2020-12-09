@@ -1,3 +1,10 @@
+<?php
+
+    session_start();
+    if (isset($_SESSION['emailA']) || isset($_SESSION['emailSA'])) {
+
+?>
+
 <!DOCTYPE HTML>  
 <html>
 <head>
@@ -5,8 +12,14 @@
 </head>
 <body>  
 <div class = "bg-image"></div>
-    <a href="LoginPage.php" class = "logout">Logout</a>
-    <h2 class = "heading">Welcome Admin!</h2>
+    <p class = "welcome">Welcome <?php 
+        if (isset($_SESSION['emailA']))
+            echo $_SESSION['emailA'];
+        else
+            echo $_SESSION['emailSA'];?>!
+    </p>
+    <a href="Logout.php" class = "logout">Logout</a>
+    <h2 class = "heading">Admin Info!</h2>
     <p class = "intro-text">
         You have access to the entire Hotel Management System. Click on 'Employee Details' to obtain a list of staff currently
         employed. Click on 'Customer Details' to obtain the list of customers signed into this portal, and click on 
@@ -19,3 +32,9 @@
     </form>
 </body>
 </html>
+<?php 
+    } else {
+        header("Location: Loginpage.php");
+        exit();
+    }
+ ?>

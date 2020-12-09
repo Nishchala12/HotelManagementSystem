@@ -1,4 +1,5 @@
 <?php
+	@session_start();
 // define variables and set to empty values
 	$pword = $email = $name = $phone = "";
 
@@ -61,24 +62,31 @@
 			exit();
 		  }
 	  }
-
-
 	  $conn = mysqli_connect('localhost:3308','root', '','hotelmanagement');
-	  $sql = "INSERT INTO customer (name, email, password, contactno) VALUES ('$name', '$email', '$pword', '$phone')";
-
-    if (mysqli_query($conn, $sql)) {
-		echo "<script type = 'text/javascript'>alert('Customer signed up successfully!');
-		window.location='CustomerPage.html';</script>";
+	  $chck = "SELECT * FROM customer WHERE email = '$email'";
+	  $res = mysqli_query($conn,$chck);
+	  if(mysqli_num_rows($res)==1)
+	  {
+		echo "<script type = 'text/javascript'>alert('There already exists an account with this Email Address. Try signing up with a new Email Address!');
+		window.location='CustomerSignupPage.php';</script>";
 		$pword = $email = $name = $phone = "";
-	} 
-	else {
-      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
-
-
-	
+	  }
+      else {
+	    $sql = "INSERT INTO customer (name, email, password, contactno) VALUES ('$name', '$email', '$pword', '$phone')";
+	    if (mysqli_query($conn, $sql)) {
+			echo "<script type = 'text/javascript'>alert('Customer signed up successfully');
+			window.location='CustomerDisplayPage.php';</script>";
+			$_SESSION['emailSC'] = $email;
+			$_SESSION['nameSC'] = $name;
+			$_SESSION['phoneSC'] = $phone;
+		  $pword = $email = $name = $phone = "";
+	    } 
+	    else {
+          echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+      }
 	}
-
+	
 	function test_input($data) {
 	  $data = trim($data);
 	  $data = stripslashes($data);

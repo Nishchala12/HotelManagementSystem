@@ -1,5 +1,6 @@
 <?php
 // define variables and set to empty values
+	@session_start();
 	$pword = $email = $name = $phone = "";
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["esignup"])) {
@@ -61,17 +62,29 @@
 		  }
 	  }
 	  $conn = mysqli_connect('localhost:3308','root', '','hotelmanagement');
-	  $sql = "INSERT INTO employee (name, email, password, contactno) VALUES ('$name', '$email', '$pword', '$phone')";
-
-    if (mysqli_query($conn, $sql)) {
-		echo "<script type = 'text/javascript'>alert('Employee signed up successfully!');
-		window.location='EmployeePage.html';</script>";
+	  $chck = "SELECT * FROM employee WHERE email = '$email'";
+	  $res = mysqli_query($conn,$chck);
+ 
+	  if(mysqli_num_rows($res)==1)
+	  {
+		echo "<script type = 'text/javascript'>alert('There already exists an account with this Email Address. Try signing up with a new Email Address!');
+		window.location='EmployeeSignupPage.php';</script>";
 		$pword = $email = $name = $phone = "";
-	} 
-	else {
-      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
+	  }
+      else {
+	    $sql = "INSERT INTO employee (name, email, password, contactno) VALUES ('$name', '$email', '$pword', '$phone')";
+	    if (mysqli_query($conn, $sql)) {
+		  echo "<script type = 'text/javascript'>alert('Employee signed up successfully!');
+		  window.location='EmployeeDisplayPage.php';</script>";
+		  $_SESSION['emailSE'] = $email;
+		  $pword = $email = $name = $phone = "";
+		} 
+	    else {
+          echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+	    }
+      }
 	}
+	
 	function test_input($data) {
 	  $data = trim($data);
 	  $data = stripslashes($data);

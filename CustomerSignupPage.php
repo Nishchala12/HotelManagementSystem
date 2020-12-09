@@ -1,4 +1,9 @@
-<!DOCTYPE HTML>  
+<?php
+
+session_start();
+
+?>
+<!DOCTYPE HTML> 
 <html>
 <head>
 <link rel = "stylesheet" href ="CustomerSignup.css">

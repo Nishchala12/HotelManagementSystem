@@ -1,6 +1,7 @@
 
 <?php
 // define variables and set to empty values
+	@session_start();
 	$pword = $email = $name = $phone = "";
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["asignup"])) {
@@ -62,20 +63,28 @@
 		  }
 	  }
 	  $conn = mysqli_connect('localhost:3308','root', '','hotelmanagement');
-	  $sql = "INSERT INTO admin (name, email, password, contactno) VALUES ('$name', '$email', '$pword', '$phone')";
-
-	  if (mysqli_query($conn, $sql)) {
-		echo "<script type = 'text/javascript'>alert('Admin signed up successfully!');
-		window.location='AdminPage.php';</script>";
+	  $chck = "SELECT * FROM admin WHERE email = '$email'";
+	  $res = mysqli_query($conn,$chck);
+ 
+	  if(mysqli_num_rows($res)==1)
+	  {
+		echo "<script type = 'text/javascript'>alert('There already exists an account with this Email Address. Try signing up with a new Email Address!');
+		window.location='AdminSignupPage.php';</script>";
 		$pword = $email = $name = $phone = "";
+	  }
+      else {
+	    $sql = "INSERT INTO admin (name, email, password, contactno) VALUES ('$name', '$email', '$pword', '$phone')";
+	    if (mysqli_query($conn, $sql)) {
+		  echo "<script type = 'text/javascript'>alert('Admin signed up successfully!');
+		  window.location='AdminDisplayPage.php';</script>";
+		  $_SESSION['emailSA'] = $email;
+		  $pword = $email = $name = $phone = "";
+	    } 
+	    else {
+		  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+	    } 
 	  } 
-	  else {
-		echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-      }  
 	}
-  
-	
-
 	function test_input($data) {
 	  $data = trim($data);
 	  $data = stripslashes($data);

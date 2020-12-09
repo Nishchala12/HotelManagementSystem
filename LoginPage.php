@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE HTML>  
 <html>
 <head>
@@ -8,7 +14,7 @@
 <div class = "bg-image"></div>
 	<h2 class = "heading">Four Seasons <br> Hotels and Resorts</h2>
 	<div class = "form-text">
-	<form method = "post" action = "login.php">  
+	<form method = "post" action = "Login.php">  
 		<?php if (isset($_GET['error'])) { ?>
 			<p class="error"><?php echo $_GET['error']; ?></p>
 		<?php } ?>

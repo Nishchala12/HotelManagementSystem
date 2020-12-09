@@ -62,6 +62,14 @@ body, html {
     position: absolute;
     bottom: 91%
 }
+.welcome {
+    color: #222;
+    font-size: 16x;
+    left: 5%;
+    position: absolute;
+    bottom: 87%;
+    font-weight: bold;
+}	
 .intro-text {
     color: #222;
     font-weight: bold;

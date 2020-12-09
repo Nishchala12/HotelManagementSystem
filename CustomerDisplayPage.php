@@ -1,11 +1,24 @@
-<!DOCTYPE HTML>  
+<?php
+
+    session_start();
+    if (isset($_SESSION['name']) && isset($_SESSION['email']) || isset($_SESSION['nameSC']) && isset($_SESSION['emailSC']) ) {
+
+?>
+
+ <!DOCTYPE HTML>  
 <html>
 <head>
 <link rel = "stylesheet" href = "CustomerPage.css">
 </head>
 <body> 
 <div class = "bg-image"></div>
-    <a href="LoginPage.php" class = "logout">Logout</a>
+    <p class = "welcome">Welcome <?php 
+        if (isset($_SESSION['email']))
+            echo $_SESSION['email'];
+        else
+            echo $_SESSION['emailSC'];?>!
+    </p>
+    <a href="Logout.php" class = "logout">Logout</a>
 	<h2 class = "heading">Rooms Gallore!</h2>
 	<p class = "intro-text">
         A wholesome experience set right in a serene cocoon encompassed by greenery all around that makes
@@ -80,3 +93,9 @@
 
 </body>
 </html>
+<?php 
+    } else {
+        header("Location: Loginpage.php");
+        exit();
+    }
+ ?>

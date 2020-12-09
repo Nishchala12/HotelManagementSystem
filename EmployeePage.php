@@ -1,7 +1,7 @@
 <?php 
-    $days = 5;
-    $salary = 0;
+    @session_start();
 
+    $salary = 0;
     if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["calculate"])) {
         calculate();
     }

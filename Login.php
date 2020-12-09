@@ -1,5 +1,5 @@
 <?php
-
+	@session_start(); 
 
 // define variables and set to empty values		
 	$pword = $email = $name = $phone = "";
@@ -54,23 +54,27 @@
  
 	  if(mysqli_num_rows($result1)==1)
 	  {
+		$row = $result1->fetch_array();
+		$_SESSION['emailA'] = $row['Email'];
 		echo "<script type = 'text/javascript'>alert('Admin logged in successfully!');
-		window.location='AdminPage.php';</script>";
+		window.location='AdminDisplayPage.php';</script>";
 	  }
 
 	  else if(mysqli_num_rows($result) == 1)
 	  {
 		$row = $result->fetch_array();
-		$name = $row['Name'];
-		$email = $row['Email'];
-		$phone = $row['ContactNo'];	
+		$_SESSION['email'] = $row['Email'];
+		$_SESSION['name'] = $row['Name'];
+		$_SESSION['phone'] = $row['ContactNo'];	
 		echo "<script type = 'text/javascript'>alert('Customer logged in successfully!');
-		window.location='CustomerPage.html';</script>";
+		window.location='CustomerDisplayPage.php';</script>";
 	  }
       else if(mysqli_num_rows($result2) == 1)
 	  {
+		$row = $result2->fetch_array();
+		$_SESSION['emailE'] = $row['Email'];
 		echo "<script type = 'text/javascript'>alert('Employee logged in successfully!');
-		window.location='EmployeePage.html';</script>";
+		window.location='EmployeeDisplayPage.php';</script>";
 	  }
 	  else
 	  {
