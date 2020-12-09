@@ -2,8 +2,8 @@
   
   session_start();
 
-    $checkin3 = $checkin5 = $checkout3 = $checkout5  = $tempin3 = $tempout3 = $tempin5 = $tempout5 = "";
-    $datediff = $totalcost = $people5 = $people3 = 0;
+    $datediff = $totalcost = $days = 0;
+
     
         if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["calculate3"])) {
             calculate3();
@@ -61,15 +61,17 @@
                 echo "<br>";
                 echo "Check-out Date: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$tempout3";
                 echo "<br>";
-                echo "No. of Days:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp $datediff";
+                echo "No. of Days:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp".$GLOBALS["datediff"];
                 echo "<br>";
                 echo "No. of Guests:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp ";
                 echo $_POST["people3"];
                 echo "<br>";
-                echo "Total Cost: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspINR $totalcost<br>"; 
+                echo "Total Cost: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspINR ".$GLOBALS["totalcost"]."<br>"; 
                 echo "Kindly go back and click on 'Book Now' to confirm your booking!";
             }
         }
+
+        
 
     function calculate5 () {
         global $datediff, $totalcost; 
@@ -108,12 +110,12 @@
             echo "<br>";
             echo "Check-out Date: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$tempout5";
             echo "<br>";
-            echo "No. of Days:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp $datediff";
+            echo "No. of Days:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp ".$GLOBALS["datediff"];
             echo "<br>";
             echo "No. of Guests:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp ";
             echo $_POST["people5"];
             echo "<br>";
-            echo "Total Cost: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspINR $totalcost<br>"; 
+            echo "Total Cost: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspINR "..$GLOBALS["totalcost"]."<br>"; 
             echo "Kindly go back and click on 'Book Now' to confirm your booking!";
         }
     }
@@ -121,12 +123,13 @@
     function book3 () {
         /*SQL to add 3 star booking to DB*/
         $name = $email = $phone = "";
-        global $datediff, $totalcost;
         $checkin = $_POST["checkin3"];
         $checkout = $_POST["checkout3"];
         $people = $_POST["people3"];
-        $days = $GLOBALS['datediff'];
-        $cost = $GLOBALS['totalcost'];
+        $GLOBALS["days"] = $GLOBALS["datediff"];
+        $cost = $GLOBALS["totalcost"];
+        echo "<script type = 'text/javascript'>alert('$totalcost');</script>";
+
         $conn = mysqli_connect('localhost:3308','root', '','hotelmanagement');
         if(isset($_SESSION['name']) && isset($_SESSION['email']) && isset($_SESSION['phone'])) {
             $name = $_SESSION['name'];
@@ -153,19 +156,22 @@
     function book5 () {
         /*SQL to add 5 star booking to DB*/
         $name = $email = $phone = "";
-        global $datediff, $totalcost;
+        $checkin = $_POST["checkin3"];
+        $checkout = $_POST["checkout3"];
+        $people = $_POST["people3"];
+
         $conn = mysqli_connect('localhost:3308','root', '','hotelmanagement');
         if(isset($_SESSION['name']) && isset($_SESSION['email']) && isset($_SESSION['phone'])) {
             $name = $_SESSION['name'];
             $phone = $_SESSION['phone'];
             $email = $_SESSION['email'];
-            $sql = "INSERT INTO booking (name, email, contactno, checkin, checkout, roomtype, days, people, cost) VALUES ('$name', '$email', '$phone', '$tempin5', '$tempout5', 'Luxury - 5 Star', '$datediff', '$people5', '$totalcost')";
+            $sql = "INSERT INTO booking (name, email, contactno, checkin, checkout, roomtype, days, people, cost) VALUES ('$name', '$email', '$phone', '$checkin', '$checkout', 'Luxury - 5 Star', '$datediff', '$people5', '$totalcost')";
         }
         else {
             $name = $_SESSION['nameSC'];
             $phone = $_SESSION['phoneSC'];
             $email = $_SESSION['emailSC'];
-            $sql = "INSERT INTO booking (name, email, contactno, checkin, checkout, roomtype, days, people, cost) VALUES ('$name', '$email', '$phone', '$tempin5', '$tempout5', 'Luxury - 5 Star', '$datediff', '$people5', '$totalcost')";
+            $sql = "INSERT INTO booking (name, email, contactno, checkin, checkout, roomtype, days, people, cost) VALUES ('$name', '$email', '$phone', '$checkin', '$checkout', 'Luxury - 5 Star', '$datediff', '$people', '$totalcost')";
         }
         if (mysqli_query($conn, $sql)) {
             echo "<script type = 'text/javascript'>alert('Booking confirmed! Payment will be processed at the Hotel. Thank you for choosing Four Seasons!');
