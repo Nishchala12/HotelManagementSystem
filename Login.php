@@ -58,6 +58,7 @@
 		$_SESSION['emailA'] = $row['Email'];
 		echo "<script type = 'text/javascript'>alert('Admin logged in successfully!');
 		window.location='AdminDisplayPage.php';</script>";
+		$pword = $email = "";
 	  }
 
 	  else if(mysqli_num_rows($result) == 1)
@@ -68,6 +69,7 @@
 		$_SESSION['phone'] = $row['ContactNo'];	
 		echo "<script type = 'text/javascript'>alert('Customer logged in successfully!');
 		window.location='CustomerDisplayPage.php';</script>";
+		$pword = $email = "";
 	  }
       else if(mysqli_num_rows($result2) == 1)
 	  {
@@ -75,14 +77,16 @@
 		$_SESSION['emailE'] = $row['Email'];
 		echo "<script type = 'text/javascript'>alert('Employee logged in successfully!');
 		window.location='EmployeeDisplayPage.php';</script>";
+		$pword = $email = "";
 	  }
 	  else
 	  {
 		echo "<script type = 'text/javascript'>alert('Please enter correct credentials');
 		window.location='LoginPage.php';</script>";
+		$pword = $email = "";
 	  }
 
-	//$pword = $email = "";
+	$pword = $email = "";
 	}
 
 	function test_input($data) {
